@@ -14,6 +14,7 @@ class ConservationListsSource {
     static log = LoggerFactory.getLogger(ConservationListsSource.class)
 
     def defaultSourceField = 'status'
+    def defaultYearSourceField = 'eventDate'
     def defaultKingdomField = 'kingdom'
     def defaultPhylumField = 'phylum'
     def defaultClassField = 'class'
@@ -36,6 +37,7 @@ class ConservationListsSource {
             JsonSlurper slurper = new JsonSlurper()
             def config = slurper.parse(source)
             defaultSourceField = config?.defaultSourceField ?: 'status'
+            defaultYearSourceField = config?.defaultYearSourceField ?: 'eventDate'
             defaultKingdomField = config?.defaultKingdomField ?: 'kingdom'
             defaultPhylumField = config?.defaultPhylumField ?: 'phylum'
             defaultClassField = config?.defaultClassField ?: 'class'
